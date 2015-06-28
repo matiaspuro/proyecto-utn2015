@@ -36,7 +36,7 @@
 
 
     });
-/**/
+
 
 /* aplicacion.directive('inicio-principal')
 

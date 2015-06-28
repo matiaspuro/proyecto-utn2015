@@ -27,7 +27,7 @@
     });
 
     aplicacion.controller('inicioCtrl', function () {
-
+        alert("comooo vaaaaa");
 
     });
 

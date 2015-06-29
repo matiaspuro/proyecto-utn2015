@@ -7,9 +7,7 @@
     var aplicacion = angular.module('einicio', ['ngRoute']);
 
 
-
-
-        aplicacion.config(function ($routeProvider) {
+    aplicacion.config(function ($routeProvider) {
 
         $routeProvider
             .when("/", {
@@ -26,8 +24,30 @@
 
     });
 
+    aplicacion.controller('navCtrl', ['$location', function ($location) {
+
+
+        this.selected = function (loc) {
+
+            var ruta = $location.path();
+
+            if (ruta == loc) {
+                return true;
+            } else {
+
+                return false;
+
+            }
+
+
+        };
+
+
+    }]);
+
+
     aplicacion.controller('inicioCtrl', function () {
-        alert("comooo vaaaaa");
+
 
     });
 
@@ -38,8 +58,8 @@
     });
 
 
-/* aplicacion.directive('inicio-principal')
+    /* aplicacion.directive('inicio-principal')
 
 
-*/
- })();
+     */
+})();

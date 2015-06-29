@@ -12,6 +12,8 @@
 
     <script src="js/jquery-1.11.3.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.24/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.24/angular-route.js"></script>
 
 
 
@@ -23,7 +25,7 @@
 <body ng-app="einicio">
 
 
-    <nav class="navbar navbar-default ">
+    <nav class="navbar navbar-default " ng-controller="navCtrl as nc">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
@@ -37,8 +39,8 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Inicio</a></li>
-                    <li><a href="#about">Productos</a></li>
+                    <li ng-class="{active: nc.selected('/')}" ><a href="#">Inicio</a></li>
+                    <li ng-class="{active: nc.selected('/productos')}"><a href="#/productos">Productos</a></li>
                     <li><a href="#contact">Contacto</a></li>
                     <!--<li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -71,8 +73,7 @@
 <div ng-view></div>
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.24/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.24/angular-route.js"></script>
+
     <script src="ecommerce.js"></script>
 </body>
 </html>

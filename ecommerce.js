@@ -31,15 +31,15 @@
                 /* controller: function ($scope,$http) {
 
 
-                    $http.get('productos.json').success(function (respuesta) {
+                 $http.get('productos.json').success(function (respuesta) {
 
-                    $scope.productos=respuesta;
-                    }
+                 $scope.productos=respuesta;
+                 }
 
-                    );
+                 );
 
-                }
-                    */
+                 }
+                 */
             })
 
 
@@ -67,33 +67,167 @@
     }]);
 
 
-
-    aplicacion.factory('datosJson', function($http){
-
-    var retornar = {};
+    aplicacion.factory('datosJson', ['$http', function ($http) {
 
 
+        var listadoT = [];
 
-        $http.get('productos.json').success(function (respuesta) {
-
-            retornar=respuesta;
-
-
-        });
+        var retornar = {
+            listadoTotal: function (callback) {
 
 
-    return retornar;
+                $http.get('productos.json').success(function (respuesta) {
+
+                    listadoT = respuesta;
+                    callback(respuesta);
+
+
+                });
+
+
+            },
+
+            listadoCategorias: function () {
+
+
+                var listadotot = listadoT.map(function (item) {
+
+                    return item.categoria;
+
+
+                });
+
+
+                listadotot = listadotot.filter(function (a, b, c) {
+
+                    return c.indexOf(a, b + 1) < 0;
+
+                });
+
+
+                listadotot = listadotot.sort();
 
 
 
-    });
+
+                for(i=0;listadotot.length>i;i++)
+
+                {
+
+                    listadotot[i]={cat:listadotot[i],id:"cat"+(i+1)}
+
+                }
 
 
 
-    aplicacion.directive('miDirectiva',['datosJson', function(datosJason) {
+
+
+
+                return listadotot;
+
+
+            },
+
+
+          /*  listadoFiltro: function (categoria) {
+
+
+                var listadoFiltro = listadoT.filter(function (item) {
+
+                    return (item.categoria == categoria);
+
+
+                });
+
+                return listadoFiltro;
+            }
+
+        */
+        }
+
+        return retornar;
+
+
+    }
+    ])
+    ;
+
+
+   aplicacion.directive('misCategorias', ['datosJson', function (datosJson) {
         return {
 
+            restrict: 'E',
+            scope: {},
 
+            templateUrl: 'listadoCategorias.html',
+
+            link: function (scope) {
+
+
+                datosJson.listadoTotal(function (resp) {
+
+                    scope.categorias = datosJson.listadoCategorias();
+
+                    console.log(datosJson.listadoCategorias());
+
+                    //console.log(datosJson.listadoFiltro('cat01'));
+
+                    console.log(scope.cat);
+
+                });
+
+
+            },
+
+            controller: function ($scope) {
+
+            $scope.cat=false;
+
+
+
+            }
+
+
+        }
+    }]);
+
+
+
+
+
+    aplicacion.directive('misProductos', ['datosJson', function (datosJson) {
+        return {
+
+            restrict: 'E',
+            scope: {},
+
+            templateUrl: 'listadoProductos.html',
+
+            link: function (scope) {
+
+
+                datosJson.listadoTotal(function (resp) {
+
+                    scope.productos = resp;
+
+                    //console.log(datosJson.listadoCategorias());
+                    //console.log(datosJson.listadoFiltro('cat01'));
+
+                });
+
+
+            },
+
+            controller: function ($scope) {
+
+
+                $scope.listadoFiltrado = function () {
+
+
+                }
+
+
+            }
 
 
         }
@@ -104,7 +238,6 @@
 
 
         $http.get('productos.json').success(function (respuesta) {
-
 
 
         });
@@ -119,8 +252,15 @@
     });
 
 
+    aplicacion.controller('controladorPrincipal', function () {
+
+
+    });
+
+
     /* aplicacion.directive('inicio-principal')
 
 
      */
-})();
+})
+();

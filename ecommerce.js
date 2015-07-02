@@ -117,15 +117,69 @@
     }]);
 
 
+    aplicacion.directive('productosGeneral', ['datosJson', function (datosJson) {
+        return {
+            restrict: "E",
+
+            transclude: true,
+            template: "<div ng-transclude=''></div>",
+
+            controller: function ($scope) {
+
+                datosJson.listadoTotal(function (resp) {
+
+                    $scope.listadoF=resp;
+
+                    $scope.filtrar('casa');
+                    console.log($scope.listadoF);
+
+
+                });
+
+               $scope.filtrar= function(cat){
+
+                $scope.listadoF=$scope.listadoF.filter(function (item) {
+
+                    return (item.categoria == cat);
+
+
+                })};
+
+            //filtrar('holaaaaa');
+
+
+
+
+
+
+            }
+
+
+
+            }
+
+
+
+    }]);
+
+
+
+
+
+
     aplicacion.directive('misCategorias', ['datosJson', function (datosJson) {
         return {
             restrict: 'E',
-            scope: {},
+            scope: {
+
+                categorias:"="
+
+            },
             templateUrl: 'listadoCategorias.html',
 
             link: function (scope) {
 
-                datosJson.listadoTotal(function (resp) {
+               /* datosJson.listadoTotal(function (resp) {
 
                     scope.categorias = datosJson.listadoCategorias();
 
@@ -134,14 +188,11 @@
                     //console.log(datosJson.listadoFiltro('cat01'));
 
                 });
-
+            */
             },
 
             controller: function ($scope) {
 
-                if ($scope.cat == true) {
-                    alert("holaaaaa");
-                }
 
             }
 
@@ -149,15 +200,19 @@
     }]);
 
 
-    aplicacion.directive('misProductos', ['datosJson', function (datosJson) {
+    aplicacion.directive('misProductos' , function (datosJson) {
         return {
             restrict: 'E',
-            scope: {},
+            scope: {
+
+                productosFilter:"="
+
+            },
             templateUrl: 'listadoProductos.html',
 
-            link: function (scope) {
+            link: function (scope,elementos,strr,control) {
 
-                datosJson.listadoTotal(function (resp) {
+                /*datosJson.listadoTotal(function (resp) {
 
                     scope.productos = resp;
 
@@ -165,17 +220,20 @@
                     //console.log(datosJson.listadoFiltro('cat01'));
 
                 });
-
+            */
             },
             controller: function ($scope) {
-                $scope.listadoFiltrado = function () {
-
-                }
 
             }
 
         }
-    }]);
+    });
+
+
+
+
+
+
 
 
     aplicacion.controller('pruebaCtrl', ['$http', function ($http) {
@@ -185,6 +243,8 @@
         });
 
     }]);
+
+
 
     aplicacion.controller('productosCtrl', function () {
 

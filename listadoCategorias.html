@@ -3,19 +3,20 @@
     <div class="list-group" >
 
 
+        <input type="checkbox" ng-init="cat=false" ng-model="cat" />{{categoria.cat}}{{cat}}
 
 
-
-        <label class="list-group-item" ng-repeat="categoria in categorias" >
+       <!-- <label class="list-group-item" ng-repeat="categoria in categorias" >
 
 
             <div class="radio">
-                <label><input type="radio" name="grupocat" ng-model="cat[$index]">{{categoria.cat}}{{cat[$index]}}</label>
+
+                <label><input type="checkbox" ng-init="cat[$index]=false" ng-model="cat[$index]" />{{categoria.cat}}{{cat[$index]}}</label>
             </div>
 
 
 
-        </label>
+        </label> ->>
 
        <!-- <a href="#" ng-repeat="categoria in categorias" class="list-group-item">{{categoria}}</a> -->
     </div>

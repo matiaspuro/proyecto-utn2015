@@ -1,18 +1,22 @@
-<body>
 
 
+
+
+<productos-general>
 <div class="container">
+
+
+
+
+
 
     <div class="row">
 
-        <div class="col-md-3">
-            <p class="lead">Shop Name</p>
-            <div class="list-group">
-                <a href="#" class="list-group-item">Category 1</a>
-                <a href="#" class="list-group-item">Category 2</a>
-                <a href="#" class="list-group-item">Category 3</a>
-            </div>
-        </div>
+
+
+       <mis-categorias categorias="listadoCat" catarray="catvalue" >
+
+       </mis-categorias>
 
         <div class="col-md-9">
 
@@ -47,43 +51,14 @@
 
             </div>
 
-            <div class="row" >
-
-                <div class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="thumbnail">
-                        <img src="http://placehold.it/320x150" alt="">
-                        <div class="caption">
-                            <h4 class="pull-right"></h4>
-                            <h4><a href="#"></a>
-                            </h4>
-                            <p></p>
-                        </div>
-                        <div class="ratings">
-                            <p class="pull-right">15 reviews</p>
-                            <p>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-
-
-
-
-
-
-            </div>
-
+            <mis-productos productos-filter="listadoF">
+            </mis-productos>
         </div>
 
     </div>
 
 </div>
+</productos-general>
 
 <!-- jQuery -->
 

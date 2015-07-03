@@ -1,0 +1,32 @@
+<div class="col-md-3">
+    <p class="lead">Shop Name</p>
+    <div class="list-group" >
+    <label class="list-group-item">
+
+        <input type="checkbox" ng-init="todos=true" ng-model="todos"  ng-change="selecciono()"         />Todas las categorias
+
+    </label>
+
+    </div>
+    <div class="list-group" >
+
+
+       <!-- <input type="checkbox" ng-init="cat=false" ng-model="cat" />{{categoria.cat}}{{cat}}-->
+
+
+
+
+        <label class="list-group-item"  ng-repeat="categoria in categorias" >
+
+
+
+
+               <input type="checkbox" ng-init="catarray[$index]=false" ng-model="catarray[$index]"  ng-change="mostrar()"         />{{categoria.cat}}
+
+
+
+        </label>
+
+       <!-- <a href="#" ng-repeat="categoria in categorias" class="list-group-item">{{categoria}}</a> -->
+    </div>
+</div>

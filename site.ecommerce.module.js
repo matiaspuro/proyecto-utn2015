@@ -1,5 +1,3 @@
-
-
 (function () {
 
     var aplicacion = angular.module('einicio', ['ui.router']);
@@ -10,76 +8,53 @@
         $urlRouterProvider.otherwise("/");
 
 
-
         $stateProvider
             .state('paginicio', {
                 url: "/",
                 templateUrl: "e_inicio.html"
             })
 
-            .state('paginicio.lista', {
-                url: "list",
-                templateUrl: "e_inicio.lista.html",
-                controller: function ($scope) {
-                    $scope.items = ["A", "List", "Of", "Items"];
-                }
-            })
 
-            .state('ecommerce', {
-                url: '/ecommerce',
-                abstract:true
-            })
-
-            .state('ecommerce.productosLista', {
-            url: '/productos/:productosId',
-            templateUrl: 'e_productos.html',
-
-            controllerAs:"prod",
-
-            controller: function($scope, $stateParams) {
-                debugger;
-                this.productosId = $stateParams.productosId;
-                this.vista="prueba2.html";
-            }
-        })
-
-            .state('ecommerce.productosDetalle', {
-                url: '/productos/:productosId',
-                templateUrl: 'e_productos_detalle.html',
-
-                controllerAs:"prod",
-
-                controller: function($scope, $stateParams) {
-                    debugger;
-
-                    this.productosId = $stateParams.productosId;
-                    this.vista="prueba2.html";
-                }
-            })
-
-        /*
             .state('productos', {
-                url: "/productos",
+                abstract:true,
+                template:"<ui-view/>",
+                controller: function ($scope) {
+
+                   $scope.p1='holaaaaaaaaaaaa';
+
+                }
+
+
+            })
+
+
+            .state('productos.all', {
+
+                url: "/all",
                 templateUrl: "e_productos.html",
-                 controller: function ($scope,$http) {
 
 
-                 $http.get('productos.json').success(function (respuesta) {
-
-                 $scope.productos=respuesta;
-                 }
-
-                 );
-
-                 }
-
-            }) */
+            })
 
 
+            .state('productos.detalle', {
 
+            url:"/detalle/:prod",
+            templateUrl:"prueba2.html",
+            controller: function($scope,$stateParams){
+
+
+                $scope.prod=$stateParams.prod;
+
+                console.log($scope.p1);
+
+
+            }
+
+
+            })
 
     });
-
 
 
     aplicacion.controller('pruebaCtrl', ['$http', function ($http) {
@@ -149,10 +124,6 @@
 
 
      */
-
-
-
-
 
 
 })

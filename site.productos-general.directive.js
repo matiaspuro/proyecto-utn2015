@@ -1,4 +1,4 @@
-(function(){
+(function () {
 
 
     var aplicacion = angular.module('einicio');
@@ -9,9 +9,6 @@
 
             transclude: true,
             template: "<div ng-transclude=''></div>",
-
-
-
 
 
             controller: function ($scope) {
@@ -26,13 +23,16 @@
 
                 datosJson.listadoTotal(function (resp) {
                     $scope.listadoTot = resp;
-
-                    $scope.listadoCat = datosJson.listadoCategorias()
-
-
                     $scope.filtrar('mostrar_todo');
 
-                    console.log($scope.catvalue);
+                    $scope.prod2= $scope.listadoTot.filter(function (item) {
+
+                        return (item.id_producto == $scope.prod);
+
+
+                    })
+                console.log($scope.prod2);
+
 
 
                 });

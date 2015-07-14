@@ -1,4 +1,4 @@
-(function(){
+(function () {
 
 
     var aplicacion = angular.module('einicio');
@@ -26,6 +26,8 @@
                  */
             },
             controller: function ($scope) {
+
+
 
             }
 

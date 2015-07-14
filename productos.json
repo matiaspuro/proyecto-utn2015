@@ -15,6 +15,7 @@
     "imagen": "imagen_producto2.jpg",
     "nombre_producto": "C. rodante",
     "categoria": "automot",
+    "categoria": "automotor",
     "descripcion": "Vivamus mattis leo ante, ut finibus orci maximus a. Suspendisse ornare justo ac pulvinar tincidunt. Morbi dolor neque, hendrerit eget ex ut, vehicula scelerisque lectus. Nulla odio lacus, rhoncus at ornare id, feugiat sit amet quam. Curabitur pretium nec ex sit amet rhoncus. Fusce semper ligula ac semper volutpat. Vivamus purus metus, porttitor non imperdiet id, varius nec metus. Morbi nunc odio, sollicitudin dictum aliquam non, dignissim vitae nisi. Praesent et dolor enim. Nulla ornare eros id enim hendrerit, a porta neque maximus.",
     "descripcion_corta": "Vivamus mattis leo ante, ut finibus orci maximus a. ",
     "precio": "2563",

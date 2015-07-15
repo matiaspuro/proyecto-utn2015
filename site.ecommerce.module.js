@@ -18,11 +18,7 @@
             .state('productos', {
                 abstract:true,
                 template:"<ui-view/>",
-                controller: function ($scope) {
-
-                   $scope.p1='holaaaaaaaaaaaa';
-
-                }
+                controller: "controladorPrincipal"
 
 
             })
@@ -46,7 +42,7 @@
 
                 $scope.prod=$stateParams.prod;
 
-                console.log($scope.p1);
+
 
 
             }
@@ -94,7 +90,99 @@
     }]);
 
 
-    aplicacion.controller('controladorPrincipal', function ($scope) {
+    aplicacion.controller('controladorPrincipal', function ($scope,datosJson) {
+
+
+        $scope.listadoF = [];
+        $scope.listadoTot = [];
+        $scope.listadoCat = [];
+        $scope.catvalue = [];
+
+        $scope.catvalue = datosJson.retornarlistadocat();
+
+
+
+
+        console.log($scope.catvalue);
+
+
+
+
+
+        datosJson.listadoTotal(function (resp) {
+            $scope.listadoTot = resp;
+            $scope.filtrar('mostrar_todo');
+            $scope.listadoCat=datosJson.listadoCategorias();
+
+            $scope.prod2= $scope.listadoTot.filter(function (item) {
+
+             return (item.id_producto == $scope.prod);
+
+
+
+             })
+
+
+
+
+        });
+
+
+        $scope.filtrar = function (cat) {
+
+            if (cat == 'mostrar_todo') {
+
+                $scope.listadoF = $scope.listadoTot;
+
+
+            } else {
+
+
+                $scope.listadoF = $scope.listadoTot.filter(function (item) {
+
+                    return (item.categoria == cat);
+
+
+                })
+            }
+        };
+
+        this.filtrar2 = function () {
+
+
+            $scope.listadoF = $scope.listadoTot.filter(function (item) {
+
+                for (i = 0; $scope.catvalue.length > i; i++) {
+
+                    if ($scope.catvalue[i]) {
+
+                        if ($scope.listadoCat[i].cat == item.categoria) {
+
+                            return true;
+
+
+                        }
+
+
+                    }
+
+
+                }
+
+
+                return false;
+
+            });
+
+        datosJson.listadocat($scope.catvalue);
+
+
+        }
+
+
+
+
+
 
     });
 

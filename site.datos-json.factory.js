@@ -2,7 +2,7 @@
     var aplicacion = angular.module('einicio');
 
     aplicacion.factory('datosJson', ['$http', function ($http) {
-
+        var listadoCat = [];
         var listadoT = [];
         var retornar = {
             listadoTotal: function (callback) {
@@ -15,6 +15,22 @@
                 });
 
             },
+
+
+            listadocat: function(datos){
+
+            listadoCat=datos;
+
+            },
+
+            retornarlistadocat: function (){
+
+
+              return listadoCat;
+
+
+            },
+
 
             listadoCategorias: function () {
 

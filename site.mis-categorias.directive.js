@@ -25,7 +25,7 @@
                 scope.mostrar = function () {
 
                     cont.filtrar2();
-                    console.log(scope.catarray);
+
 
                 };
 

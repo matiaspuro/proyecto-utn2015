@@ -24,6 +24,9 @@
 
                 scope.mostrar = function () {
 
+
+
+
                     cont.filtrar2();
 
 

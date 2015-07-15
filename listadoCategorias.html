@@ -4,7 +4,7 @@
 
     <label class="list-group-item">
 
-        <input type="checkbox" ng-init="todos=true" ng-model="todos"  ng-change="selecciono()"         />Todas las categorias
+        <input type="checkbox" ng-init="todos=true; bandera=true" ng-model="todos"  ng-change="selecciono()"         />Todas las categorias
 
     </label>
 
@@ -22,7 +22,7 @@
 
 
 
-               <input type="checkbox" ng-init="catarray[$index]=false" ng-model="catarray[$index]"  ng-change="mostrar()"         />{{categoria.cat}}
+               <input type="checkbox" ng-init="mostrar()" ng-model="catarray[$index]"  ng-change="mostrar()"         />{{categoria.cat}}
 
 
 

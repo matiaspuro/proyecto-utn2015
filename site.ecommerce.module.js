@@ -98,7 +98,7 @@
         $scope.listadoCat = [];
         $scope.catvalue = [];
 
-        $scope.catvalue = datosJson.retornarlistadocat();
+
 
 
 
@@ -111,8 +111,10 @@
 
         datosJson.listadoTotal(function (resp) {
             $scope.listadoTot = resp;
-            $scope.filtrar('mostrar_todo');
+
             $scope.listadoCat=datosJson.listadoCategorias();
+
+            $scope.catvalue = datosJson.retornarlistadocat();
 
             $scope.prod2= $scope.listadoTot.filter(function (item) {
 
@@ -127,8 +129,8 @@
 
         });
 
-
-        $scope.filtrar = function (cat) {
+        /*
+        filtrar = function (cat) {
 
             if (cat == 'mostrar_todo') {
 
@@ -147,6 +149,26 @@
             }
         };
 
+
+        this.filtrar = function (cat) {
+
+            if (cat == 'mostrar_todo') {
+
+                $scope.listadoF = $scope.listadoTot;
+
+
+            } else {
+
+
+                $scope.listadoF = $scope.listadoTot.filter(function (item) {
+
+                    return (item.categoria == cat);
+
+
+                })
+            }
+        };
+    */
         this.filtrar2 = function () {
 
 

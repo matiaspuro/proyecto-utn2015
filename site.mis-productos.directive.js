@@ -8,7 +8,7 @@
             restrict: 'E',
             scope: {
 
-                productosFilter: "="
+                productosFiltrados: "="
 
             },
             templateUrl: 'listadoProductos.html',

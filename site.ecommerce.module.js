@@ -93,30 +93,30 @@
     aplicacion.controller('controladorPrincipal', function ($scope,datosJson) {
 
 
-        $scope.listadoF = [];
-        $scope.listadoTot = [];
-        $scope.listadoCat = [];
-        $scope.catvalue = [];
+        $scope.listadoFiltrado = [];
+        $scope.listadoTotal = [];
+        $scope.listadoCategorias = [];
+        $scope.estadoCategorias = [];
 
 
 
 
 
 
-        console.log($scope.catvalue);
+
 
 
 
 
 
         datosJson.listadoTotal(function (resp) {
-            $scope.listadoTot = resp;
+            $scope.listadoTotal = resp;
 
-            $scope.listadoCat=datosJson.listadoCategorias();
+            $scope.listadoCategorias=datosJson.listadoCategorias();
 
-            $scope.catvalue = datosJson.retornarlistadocat();
+            $scope.estadoCategorias = datosJson.retornarlistadocat();
 
-            $scope.prod2= $scope.listadoTot.filter(function (item) {
+            $scope.prod2= $scope.listadoTotal.filter(function (item) {
 
              return (item.id_producto == $scope.prod);
 
@@ -169,16 +169,16 @@
             }
         };
     */
-        this.filtrar2 = function () {
+        this.filtrarProductos = function () {
 
 
-            $scope.listadoF = $scope.listadoTot.filter(function (item) {
+            $scope.listadoFiltrado = $scope.listadoTotal.filter(function (item) {
 
-                for (i = 0; $scope.catvalue.length > i; i++) {
+                for (i = 0; $scope.estadoCategorias.length > i; i++) {
 
-                    if ($scope.catvalue[i]) {
+                    if ($scope.estadoCategorias[i]) {
 
-                        if ($scope.listadoCat[i].cat == item.categoria) {
+                        if ($scope.listadoCategorias[i].cat == item.categoria) {
 
                             return true;
 
@@ -196,7 +196,9 @@
 
             });
 
-        datosJson.listadocat($scope.catvalue);
+        datosJson.listadocat($scope.estadoCategorias);
+
+
 
 
         }

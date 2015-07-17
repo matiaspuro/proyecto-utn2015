@@ -7,8 +7,8 @@
             restrict: 'E',
             scope: {
 
-                categorias: "=",
-                catarray: "="
+                listadoCategorias: "=",
+                estadoCategorias: "="
 
 
             },
@@ -22,38 +22,18 @@
 
             link: function (scope, element, atrr, cont) {
 
-                scope.mostrar = function () {
+                scope.mostrarProductos = function () {
 
 
 
 
-                    cont.filtrar2();
+                    cont.filtrarProductos();
 
 
                 };
 
 
-                scope.selecciono = function () {
 
-                    if (scope.todos) {
-
-                        for (i = 0; scope.catarray.length > i; i++) {
-
-                            scope.catarray[i] = true;
-
-                        }
-                    } else {
-
-                        for (i = 0; scope.catarray.length > i; i++) {
-
-                            scope.catarray[i] = false;
-
-
-                        }
-
-                    }
-                    scope.mostrar();
-                };
 
 
 

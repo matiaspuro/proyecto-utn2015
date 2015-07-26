@@ -1,6 +1,6 @@
-(function(){
+(function () {
     var aplicacion = angular.module('einicio');
-    
+
 
     aplicacion.directive('misCategorias', ['datosJson', function (datosJson) {
         return {
@@ -9,54 +9,44 @@
 
                 listadoCategorias: "=",
                 estadoCategorias: "="
-
-
             },
             templateUrl: 'listadoCategorias.html',
             require: "^productosGeneral",
 
-            controller: function ($scope) {
-
-
-            },
 
             link: function (scope, element, atrr, cont) {
 
                 scope.mostrarProductos = function () {
 
-
-
-
-                    cont.filtrarProductos();
-
+                    cont.mostrarProductos();
 
                 };
 
+                scope.mostrarCategorias = function () {
+
+                    cont.mostrarCategorias();
+                };
+
+          
+            scope.mostrarCategorias();
 
 
-
-
-
-
-
-                /* datosJson.listadoTotal(function (resp) {
-
-                 scope.categorias = datosJson.listadoCategorias();
-
-                 console.log(datosJson.listadoCategorias());
-
-                 //console.log(datosJson.listadoFiltro('cat01'));
-
-                 });
-                 */
             }
-
-
         }
-    }
-    ])
+    }])
     ;
 
 
-
 })();
+
+
+/* datosJson.listadoTotal(function (resp) {
+
+ scope.categorias = datosJson.listadoCategorias();
+
+ console.log(datosJson.listadoCategorias());
+
+ //console.log(datosJson.listadoFiltro('cat01'));
+
+ });
+ */

@@ -2,7 +2,9 @@
     var aplicacion = angular.module('einicio');
 
     aplicacion.factory('datosJson', ['$http', function ($http) {
-        var listadoCat = [];
+
+        var listadoProd = [];
+        var listadoCat = {};
         var listadoT = [];
         var retornar = {
             listadoTotal: function (callback) {
@@ -17,13 +19,13 @@
             },
 
 
-            listadocat: function(datos){
+            guardaListadoCat: function(datos){
 
             listadoCat=datos;
 
             },
 
-            retornarlistadocat: function (){
+            retornaListadoCat: function (){
 
 
               return listadoCat;
@@ -31,43 +33,23 @@
 
             },
 
+            guardaListadoProd: function(datos){
 
-            listadoCategorias: function () {
-
-                var listadotot = listadoT.map(function (item) {
-                    return item.categoria;
-
-                });
-
-                listadotot = listadotot.filter(function (a, b, c) {
-                    return c.indexOf(a, b + 1) < 0;
-                });
-
-                listadotot = listadotot.sort();
-
-                for (i = 0; listadotot.length > i; i++) {
-                    listadotot[i] = {cat: listadotot[i], id: "cat" + (i + 1)}
-                }
-
-                return listadotot;
+                listadoProd=datos;
 
             },
 
 
-            /*  listadoFiltro: function (categoria) {
+            retornaListadoProd: function (){
 
 
-             var listadoFiltro = listadoT.filter(function (item) {
-
-             return (item.categoria == categoria);
+                return listadoProd;
 
 
-             });
+            }
 
-             return listadoFiltro;
-             }
 
-             */
+
         }
         return retornar;
 

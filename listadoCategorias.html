@@ -5,20 +5,22 @@
 
 
     </div>
-    <div class="list-group" >
+    <div class="list-group" ng-repeat="(nombrecategoria,categorias) in listadoCategorias" >
 
 
-       <!-- <input type="checkbox" ng-init="cat=false" ng-model="cat" />{{categoria.cat}}{{cat}}-->
-
-
-
-
-        <label class="list-group-item"  ng-repeat="categoria in listadoCategorias" >
+      <label>{{nombrecategoria}}</label> <!-- <input type="checkbox" ng-init="cat=false" ng-model="cat" />{{categoria.cat}}{{cat}}-->
 
 
 
 
-               <input type="checkbox" ng-init="mostrarProductos()" ng-model="estadoCategorias[$index]"  ng-change="mostrarProductos()"         />{{categoria.cat}}
+
+
+
+        <label class="list-group-item" ng-repeat="categoria in categorias"   >
+
+
+
+               <input type="checkbox"  ng-model="categoria.estado"  ng-change="mostrarProductos()"         />{{categoria.nombre}}
 
 
 
